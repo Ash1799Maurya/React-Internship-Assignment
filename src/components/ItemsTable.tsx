@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { DataTable, DataTablePageParams } from 'primereact/datatable';
+import { DataTable, DataTablePageEvent } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { OverlayPanel } from 'primereact/overlaypanel';
 import { InputNumber } from 'primereact/inputnumber';
@@ -52,8 +52,9 @@ const ItemsTable: React.FC = () => {
     }, [page]);
 
     
-    const onPageChange = (event: DataTablePageParams): void => {
-        setPage(event.page + 1); 
+    const onPageChange = (event: DataTablePageEvent): void => {
+        const currentPage = event.page ?? 0;
+        setPage(currentPage + 1); 
     };
 
     
